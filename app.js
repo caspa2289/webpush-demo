@@ -34,7 +34,7 @@ const unregisterListener = async (endpoint) => {
 
 const subscribe = async (applicationServerKey) => {
     if (navigator?.serviceWorker) {
-        const registration = await navigator.serviceWorker.register('serviceWorker.js')
+        const registration = await navigator.serviceWorker.register('./serviceWorker.js')
 
         await navigator.serviceWorker.ready
 
