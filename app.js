@@ -4,15 +4,15 @@ const publicKeyIndicator = document.getElementById('publicKey')
 const subscriptionIndicator = document.getElementById('subscription')
 
 const getServerPublicKey = async () => {
-    const response = await fetch('http://localhost:6969/api/v1/notification/publicKey', {
+    const response = await fetch('https://rocketbackend.up.railway.app/api/v1/notification/publicKey', {
         headers: { 'Content-type': 'application/json' }
     })
 
     return await response.json()
 }
 
-const registerListener = async ( endpoint, key, authSecret ) => {
-    await fetch('http://localhost:6969/api/v1/notification/register', {
+const registerListener = async ( endpoint, key, authSecret) => {
+    await fetch('https://rocketbackend.up.railway.app/api/v1/notification/register', {
         method: 'post',
         headers: { 'Content-type': 'application/json' },
         body: JSON.stringify({ endpoint, key, authSecret })
@@ -21,8 +21,8 @@ const registerListener = async ( endpoint, key, authSecret ) => {
     button.disabled = false
 }
 
-const unregisterListener = async ( endpoint ) => {
-    await fetch('http://localhost:6969/api/v1/notification/unregister', {
+const unregisterListener = async (endpoint) => {
+    await fetch('https://rocketbackend.up.railway.app/api/v1/notification/unregister', {
         method: 'post',
         headers: { 'Content-type': 'application/json' },
         body: JSON.stringify({ endpoint })
@@ -32,7 +32,7 @@ const unregisterListener = async ( endpoint ) => {
     subscriptionIndicator.style.color = 'red'
 }
 
-const subscribe = async ( applicationServerKey ) => {
+const subscribe = async (applicationServerKey) => {
     if (navigator?.serviceWorker) {
         const registration = await navigator.serviceWorker.register('serviceWorker.js')
 
