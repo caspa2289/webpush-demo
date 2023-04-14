@@ -3,6 +3,8 @@ const notificationPermissionIndicator = document.getElementById('notificationPer
 const publicKeyIndicator = document.getElementById('publicKey')
 const subscriptionIndicator = document.getElementById('subscription')
 
+console.log('test')
+
 const getServerPublicKey = async () => {
     const response = await fetch('https://rocketbackend.up.railway.app/api/v1/notification/publicKey', {
         headers: { 'Content-type': 'application/json' }

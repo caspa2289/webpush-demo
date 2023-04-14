@@ -13,8 +13,8 @@ self.addEventListener('push', (event) => {
         self.registration.showNotification(title, {
             //Всё это можно отправлять с бэка
             body,
-            icon: 'image.jpg',
-            image: 'image2.jpg',
+            icon: './image.jpg',
+            image: './image2.jpg',
             vibrate: [500, 100, 500],
             requireInteraction: true
         })
@@ -28,7 +28,7 @@ self.addEventListener('notificationclick', (event) => {
                 return clientList[0].focus()
             }
 
-            return self.clients.openWindow('http://localhost:63342')
+            return self.clients.openWindow('https://caspa2289.github.io/webpush-demo/')
         })
     )
 })
