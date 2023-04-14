@@ -1,0 +1,20 @@
+{
+  "name": "notifications-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "gh-pages -d ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caspa2289/webpush-demo.git"
+  },
+  "author": "caspa2289",
+  "license": "ISC",
+  "homepage": "https://caspa2289.github.io/webpush-demo",
+  "devDependencies": {
+    "gh-pages": "5.0.0"
+  }
+}
