@@ -79,6 +79,8 @@ const setup = async () => {
             subscriptionIndicator.style.color = 'green'
         }
 
+        alert(navigator.userAgent)
+
         const isIos = !!navigator.userAgent.match(/(iPad|iPhone|iPod)/g)
 
         if (!isIos) {
@@ -93,7 +95,7 @@ const setup = async () => {
             addListeners()
         } else {
             const isAppInstalled = window.matchMedia('display: standalone').matches
-            console.log(`Is app installed: ${isAppInstalled}`)
+            alert(`Is app installed: ${isAppInstalled}`)
 
             if (isAppInstalled) {
                 permissionButton.disabled = false
