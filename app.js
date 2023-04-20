@@ -94,16 +94,16 @@ const setup = async () => {
 
             addListeners()
         } else {
-            const isAppInstalled = window.matchMedia('display: standalone').matches
-            alert(`Is app installed: ${isAppInstalled}`)
+            // const isAppInstalled = window.matchMedia('display: standalone').matches
+            // alert(`Is app installed: ${isAppInstalled}`)
 
-            if (isAppInstalled) {
+            // if (isAppInstalled) {
                 permissionButton.disabled = false
 
                 permissionButton.addEventListener('click', () => {
                     addListeners()
                 })
-            }
+            // }
         }
 
     } catch (err) {
