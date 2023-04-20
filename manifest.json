@@ -1,0 +1,13 @@
+{
+  "short_name": "Notifications",
+  "name": "Notifications",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "icons": [{
+    "src": "touch-icon.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }]
+}

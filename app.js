@@ -2,6 +2,7 @@ const button = document.getElementById('button')
 const notificationPermissionIndicator = document.getElementById('notificationPermission')
 const publicKeyIndicator = document.getElementById('publicKey')
 const subscriptionIndicator = document.getElementById('subscription')
+const permissionButton = document.getElementById('permissionButton')
 
 console.log('test')
 
@@ -67,27 +68,45 @@ const subscribe = async (applicationServerKey) => {
 
 const setup = async () => {
     try {
-        button.addEventListener('click', unregisterListener)
 
-        const permission = await Notification.requestPermission()
+        const addListeners = async () => {
+            button.addEventListener('click', unregisterListener)
 
-        if (permission !== 'granted') {
-            throw new Error('Notification permission required')
-        } else {
-            notificationPermissionIndicator.style.color = 'green'
+            const { response: { publicKey } } = await getServerPublicKey()
+            publicKeyIndicator.style.color = 'green'
+
+            await subscribe(publicKey)
+            subscriptionIndicator.style.color = 'green'
         }
 
-        const { response: { publicKey } } = await getServerPublicKey()
-        publicKeyIndicator.style.color = 'green'
+        const isIos = !!navigator.userAgent.match(/(iPad|iPhone|iPod)/g)
 
-        await subscribe(publicKey)
-        subscriptionIndicator.style.color = 'green'
+        if (!isIos) {
+            const permission = await Notification.requestPermission()
 
+            if (permission !== 'granted') {
+                throw new Error('Notification permission required')
+            } else {
+                notificationPermissionIndicator.style.color = 'green'
+            }
+
+            addListeners()
+        } else {
+            const isAppInstalled = window.matchMedia('display: standalone').matches
+            console.log(`Is app installed: ${isAppInstalled}`)
+
+            if (isAppInstalled) {
+                permissionButton.disabled = false
+
+                permissionButton.addEventListener('click', () => {
+                    addListeners()
+                })
+            }
+        }
 
     } catch (err) {
         alert(err)
     }
-
 }
 
 setup().then(() => {
