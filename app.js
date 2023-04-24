@@ -81,7 +81,7 @@ const setup = async () => {
 
         alert(navigator.userAgent)
 
-        const isIos = !!navigator.userAgent.match(/(Macintosh)/gi)
+        const isIos = !!navigator.userAgent.match(/(IPhone)/gi)
 
         if (!isIos) {
             const permission = await Notification.requestPermission()
