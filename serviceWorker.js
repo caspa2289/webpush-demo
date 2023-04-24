@@ -32,3 +32,23 @@ self.addEventListener('notificationclick', (event) => {
         })
     )
 })
+
+self.addEventListener('fetch', (event) => {
+    //МОК ИЗ ДОКИ, ничего осмысленного не делает
+    event.respondWith(
+        caches.match(event.request).then((response) => {
+            if (response) {
+
+                return response;
+            }
+
+            return fetch(event.request)
+                .then((response) => {
+                    return response;
+                })
+                .catch((error) => {
+                    throw error;
+                });
+        })
+    );
+})
